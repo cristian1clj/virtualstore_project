@@ -1,0 +1,34 @@
+<%= form_with model: @product do |form| %>
+    <% @product.errors.full_messages.each do |error| %>
+        <div>
+            <%= error %>
+        </div>
+    <% end %>
+
+    <div>
+        <%= form.label :name, class: 'font-bold' %>
+        <%= form.text_field :name %>
+    </div>
+
+    <div>
+        <%= form.label :description, class: 'font-bold' %>
+        <%= form.text_area :description %>
+    </div>
+
+    <div>
+        <%= form.label :price, class: 'font-bold' %>
+        <%= form.number_field :price %>
+    </div>
+
+    <div>
+        <%= form.label :photo, class: 'font-bold' %>
+        <%= form.file_field :photo %>
+    </div>
+    
+    <div>
+        <%= form.label :category_id, class: 'font-bold' %>
+        <%= form.collection_select :category_id, Category.all.order(name: :asc), :id, :name %>
+    </div>
+
+    <%= form.submit %>
+<% end %>

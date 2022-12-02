@@ -1,0 +1,15 @@
+<div class="bg-white mx-[calc(25%)] rounded w-1/2">
+    <%= image_tag @product.photo, width: 200, class: 'w-full h-100 object-cover' %>
+    <h1 class="name mx-4 font-bold text-2xl"><%= @product.name %></h1>
+
+    <p class="description mx-4"><%= @product.description %></p>
+    <p class="price mx-4 text-xl">$<%= @product.price %></p>
+
+    <div class="flex justify-between">
+        <%= link_to 'Editar producto', edit_product_path(@product), class: 'mx-2 text-teal-500 font-bold' %>
+        <%= link_to 'Eliminar producto', product_path(@product), data: {
+            turbo_method: :delete, 
+            turbo_confirm: '¿Estas seguro?'
+        }, class: 'mx-2 text-red-500 font-bold' %>
+    </div>
+</div>
